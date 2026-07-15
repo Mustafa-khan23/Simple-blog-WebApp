@@ -1,0 +1,24 @@
+{
+  "name": "simple-blog-webapp",
+  "version": "1.0.0",
+  "description": "This project is for learning CRUD operation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mustafa-khan23/Simple-blog-WebApp.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mustafa-khan23/Simple-blog-WebApp/issues"
+  },
+  "homepage": "https://github.com/Mustafa-khan23/Simple-blog-WebApp#readme",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "path": "^0.12.7"
+  }
+}
