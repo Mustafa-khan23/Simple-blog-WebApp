@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blogs | Blogigy</title>
+    <link rel="stylesheet" href="/public/style/style.css">
   </head>
   <body>
     <%- include("partials/navbar.ejs") %>
+    <div class="row g-4" id="container">
     <% for(blogs of blogContent) { %>
-    <div class="card" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title"><%= blogs.title %></h5>
-        <p class="card-text"><%= blogs.content %></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="card" style="width: 18rem" id="card-body">
+      <div class="card-body" id="card-body">
+        <h5 class="card-title"><%= blogs.author%></h5>
+        <p class="card-text"><%= blogs.title %></p>
+        <a href="http://localhost:3000/blogs/<%= blogs.id %>" class="btn btn-primary">view blog</a>
       </div>
     </div>
     <% } %>
+    </div>
   </body>
 </html>
