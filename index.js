@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const PORT = 3000;
 const app = express();
 let blogContent = require("./blogs.json");
+const data = JSON.parse(fs.readFileSync("blogs.json", "utf-8"));
 let name;
 for (let blogs of blogContent) {
   name = blogs;
@@ -31,9 +33,24 @@ app.get("/blogs", (req, res) => {
 app.get("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
   const blog = blogContent.find((name) => name.id === id);
+  // const blogUsr = blogContent.find((name) => name.author === author);
   res.render("details.ejs", { name, id, blogContent, blog });
 });
 //server
+
+app.get("/create", (req, res) => {
+  res.render("createBlog.ejs", {});
+});
+
+app.post("/create", (req, res) => {
+  data.author.push({
+    author: "mfhkjsdfh",
+  });
+  let { username } = req.body;
+  blogContent.push(username);
+  res.send("blog added successfully");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 });
