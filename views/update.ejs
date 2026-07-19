@@ -13,7 +13,7 @@
   </head>
   <body>
     <%- include("partials/navbar") %>
-    <form action="/create" method="post">
+    <form action="/blogs/<%=blog.id %>?_method=PATCH" method="post">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">@</span>
         <input
@@ -22,7 +22,7 @@
           placeholder="Author"
           aria-label="Username"
           aria-describedby="basic-addon1"
-          name="username"
+          name="author"
           value="<%= blog.author %>"
         />
       </div>
@@ -45,12 +45,12 @@
           class="form-control"
           aria-label="With textarea"
           placeholder="content for blog"
-          name="blogContent"
+          name="content"
         >
 <%= blog.content %></textarea
         >
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success">Update</button>
     </form>
   </body>
 </html>

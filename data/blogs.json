@@ -37,9 +37,9 @@
   },
   {
     "id": 7,
-    "title": "Building Your First CRUD App",
-    "author": "Mustafa",
-    "content": "CRUD applications are the foundation of web development. They teach you how to create, read, update, and delete resources."
+    "title": "CRUD operations for backend !",
+    "author": "mustafa",
+    "content": "CRUD -----> Create, Read, Update, Delete this are main or basic building blocks for CRUD operations to design REST APIs "
   },
   {
     "id": 8,
@@ -55,9 +55,7 @@
   },
   {
     "id": 10,
-    "title": "JavaScript Array Methods",
-    "author": "Ali",
-    "content": "Methods such as map(), filter(), find(), reduce(), and forEach() are essential for working with collections of data."
+    "title": "JavaScript Array Methods"
   },
   {
     "id": 11,
@@ -70,5 +68,9 @@
     "title": "MCA - reality ",
     "author": "safah khan",
     "content": "MCA (Masters of computer application) , I'm pursuing it from Dr. B.R Ambetkar marathwada university Aurangabad , MH here faculty is very supportive , more technical subjects and structured schedule"
+  },
+  {
+    "id": 13,
+    "title": "my experience in aurangabad"
   }
 ]

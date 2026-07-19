@@ -1,13 +1,14 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const path = require("path");
 const fs = require("fs");
 const PORT = 3000;
 const app = express();
-const blogContent = require("./blogs.json");
+const blogContent = require("./data/blogs.json");
 const name = blogContent[0]?.author || "Blog";
-const methodOverride = require("method-override");
 
 // middlewares
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -27,7 +28,7 @@ app.get("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
   const blog = blogContent.find((item) => item.id === id);
   if (!blog) {
-    return res.redirect("/blogs");
+    return res.redirect("./data/blogs.json");
   }
   res.render("details.ejs", { name, id, blogContent, blog });
 });
@@ -46,7 +47,7 @@ app.post("/create", (req, res) => {
     content: blogText,
   };
   blogContent.push(newBlog);
-  fs.writeFileSync("blogs.json", JSON.stringify(blogContent, null, 2));
+  fs.writeFileSync("./data/blogs.json", JSON.stringify(blogContent, null, 2));
   res.redirect("/blogs");
 });
 
@@ -59,13 +60,18 @@ app.get("/blogs/:id/update", (req, res) => {
   res.render("update.ejs", { blogContent, blog });
 });
 
-app.patch("/blogs/:id/update", (req, res) => {
+app.patch("/blogs/:id", (req, res) => {
+  console.log("patch route is working");
   const id = Number(req.params.id);
   const blog = blogContent.find((item) => item.id === id);
-  if (!blog) {
-    return res.redirect("/blogs");
-  }
-  res.send("Updated!", { blog });
+  blog.title = req.body.title;
+  blog.author = req.body.author;
+  blog.content = req.body.content;
+  fs.writeFileSync(
+    path.join("./data/blogs.json"),
+    JSON.stringify(blogContent, null, 2),
+  );
+  res.redirect("/blogs");
 });
 
 app.listen(PORT, () => {
