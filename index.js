@@ -70,7 +70,7 @@ app.patch("/blogs/:id", (req, res) => {
     path.join("./data/blogs.json"),
     JSON.stringify(blogContent, null, 2),
   );
-  res.redirect("/blogs");
+  res.redirect("/blogs", { blogContent });
 });
 
 app.delete("/blogs/:id", (req, res) => {
@@ -86,11 +86,12 @@ app.delete("/blogs/:id", (req, res) => {
 app.get("/blogs/:id/update", (req, res) => {
   const id = Number(req.params.id);
   const blog = blogContent.find((item) => item.id === id);
-  res.render("update.ejs", { blog });
+  const index = blogContent.find((item) => item.id === id);
+  res.render("update.ejs", { blog, index });
 });
 app.put("/blogs/:id", (req, res) => {
   const id = Number(req.params.id);
-  const index = blogContent.find((item) => item.id === id);
+  const index = blogContent.findIndex((item) => item.id === id);
 
   if (index === -1) {
     return res.redirect("/blogs/:id");
@@ -105,8 +106,10 @@ app.put("/blogs/:id", (req, res) => {
 
   blogContent[index] = updatedBlog;
   fs.writeFileSync("./data/blogs.json", JSON.stringify(blogContent, null, 2));
+  res.redirect("/blogs");
 });
 
+//server
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 });
