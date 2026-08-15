@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs | Blogigy</title>
+    <title>Blogs | Blogify</title>
     <link rel="stylesheet" href="/public/style/style.css" />
   </head>
   <body>
@@ -14,14 +14,13 @@
         <p class="eyebrow">Discover</p>
         <h1>Stories from the community</h1>
         <p class="intro-text">
-          Browse the latest posts, open a blog, and explore the ideas behind each story.
+          Browse the latest posts, explore new ideas, and revisit the articles that matter most.
         </p>
       </section>
 
       <div class="blog-grid">
         <% blogContent.forEach((blogs) => { %>
           <article class="blog-card">
-            <div class="card-glow"></div>
             <div class="card-content">
               <p class="card-label">Author</p>
               <h3 class="card-title"><%= blogs.author %></h3>

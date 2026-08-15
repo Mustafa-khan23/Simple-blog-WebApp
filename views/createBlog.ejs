@@ -4,49 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create | Blogify</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="/public/style/style.css" />
   </head>
   <body>
-    <%- include("partials/navbar") %>
-    <form action="/create" method="POST">
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Author"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          name="username"
-        />
-      </div>
+    <%- include("partials/navbar.ejs") %>
 
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Title of the blog"
-          aria-label="title"
-          aria-describedby="basic-addon1"
-          name="title"
-        />
-      </div>
+    <main class="page-shell">
+      <section class="form-card">
+        <p class="eyebrow">New post</p>
+        <h2>Create a blog</h2>
 
-      <div class="input-group">
-        <span class="input-group-text">Blog</span>
-        <textarea
-          class="form-control"
-          aria-label="With textarea"
-          placeholder="content for blog"
-          name="blogContent"
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-success">submit</button>
-    </form>
+        <form action="/create" method="POST" class="form-panel">
+          <div class="field">
+            <label for="username">Author</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter author name"
+              name="username"
+              aria-label="Author name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="title">Blog title</label>
+            <input
+              id="title"
+              type="text"
+              placeholder="Title of the blog"
+              name="title"
+              aria-label="Blog title"
+            />
+          </div>
+
+          <div class="field">
+            <label for="blogContent">Content</label>
+            <textarea
+              id="blogContent"
+              placeholder="Write your blog content here..."
+              name="blogContent"
+              aria-label="Blog content"
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Publish</button>
+            <a href="/blogs" class="btn btn-secondary">View all blogs</a>
+          </div>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

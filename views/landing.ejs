@@ -3,41 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Blogify</title>
+    <link rel="stylesheet" href="/public/style/style.css" />
   </head>
   <body>
     <%- include("partials/navbar.ejs") %>
-    <section class="hero-section">
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="/images/hero-section.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
 
-      <form action="/" method="POST">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Username"
-              name="username"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
+    <main class="auth-shell">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Welcome</p>
+          <h1>Write stories that feel clear, thoughtful, and easy to share.</h1>
+          <p>
+            Create a place for your ideas, publish your updates, and keep your
+            writing organized in one simple space.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/blogs" class="btn btn-primary">Browse blogs</a>
+            <a href="/create" class="btn btn-secondary">Create a post</a>
           </div>
+        </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input
-              type="password"
-              class="form-control"
-              placeholder="password"
-              name="password"
-              aria-label="password"
-              aria-describedby="basic-addon1"
-            />
+        <div class="login-card">
+          <h2>Sign in</h2>
+          <form action="/" method="POST" class="form-panel">
+            <div class="field">
+              <label for="username">Username</label>
+              <input
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Enter your username"
+                aria-label="Username"
+              />
             </div>
-            <button type="submit" class="btn btn-primary" id="submit" onclick="alert('successfully logged in')">submit</button>
-        </form>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                aria-label="Password"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submit">
+              Continue
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
