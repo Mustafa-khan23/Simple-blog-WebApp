@@ -51,6 +51,47 @@ A simple Express + EJS blog application built for learning CRUD operations. The 
    http://localhost:3000
    ```
 
+## Run using Docker
+
+The project includes a **Dockerfile** and a **docker‑compose.yml** that make it easy to run the app in a container.
+
+### Using Docker Compose (recommended)
+
+```bash
+docker compose up --build
+```
+
+This command builds the image defined in the `Dockerfile` and starts the container, mapping port **3000** on the host to the container. The app will be reachable at `http://localhost:3000`.
+
+### Using Docker directly
+
+If you prefer to work with Docker commands manually:
+
+```bash
+docker build -t simple-blog .
+docker run -p 3000:3000 simple-blog
+```
+
+The `Dockerfile`:
+
+```Dockerfile
+FROM node:26-alpine
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node","index.js"]
+```
+
+It installs the Node.js runtime, copies the source code, installs dependencies, and starts the server on port **3000**.
+
 ## Usage
 
 - Visit the home page to explore the app.
